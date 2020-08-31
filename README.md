@@ -1,2 +1,1 @@
-# Description
- This is a readme generator
+# This is a title for a readme
