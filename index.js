@@ -2,8 +2,7 @@ const fs = require('fs')
 const inquirer = require('inquirer')
 const util = require('util')
 
-const html = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-const markdown = ['#', '##', '###', '####', '#####', '######' ]
+const markdowns = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'italic', 'strong', 'striketrough', 'blockquote', 'link', 'ul', 'ol', 'code block']
 
 // const writeAsyncFile = util.promisify(fs.writeFile)
 const appendAsyncFile = util.promisify(fs.appendFile)
@@ -30,7 +29,7 @@ function choseMarkdown() {
             type: 'list',
             name: 'element',
             message: 'What element do you want to create',
-            choices: html
+            choices: markdowns
         },
         {
             type: 'input',
@@ -44,20 +43,18 @@ async function start() {
     try {
         const confirm = await confirmMarkdown()
 
-        if(confirm.confirm === 'yes') {
+        if (confirm.confirm === 'yes') {
             console.log("Create an element")
             init()
-        } else if(confirm.confirm === 'no') {
+        } else if (confirm.confirm === 'no') {
             console.log("your project is done")
         }
     }
 
-    catch(err) {
+    catch (err) {
         console.log(err)
     }
 }
-
-
 
 async function init() {
     console.log('Welcome to the readme generator')
@@ -67,28 +64,139 @@ async function init() {
         // console.log(responses.element)
 
         let markdown = responses.element
+        let content = responses.description
 
-        if(markdown === 'h1') {
-            markdown = '#'
-        } else if(markdown === 'h2') {
-            markdown = '##'
-        } else if(markdown === 'h3') {
-            markdown = '###'
+        switch (markdown) {
+            case 'h1':
+                markdown = '#'
+                writeHeaders(markdown, content)
+                break;
+            case 'h2':
+                markdown = '##'
+                writeHeaders(markdown, content)
+                break;
+            case 'h3':
+                markdown = '###'
+                writeHeaders(markdown, content)
+                break;
+            case 'h4':
+                markdown = '####'
+                writeHeaders(markdown, content)
+                break;
+            case 'h5':
+                markdown = '#####'
+                writeHeaders(markdown, content)
+                break;
+            case 'h6':
+                markdown = '######'
+                writeHeaders(markdown, content)
+                break;
+            case 'italic':
+                markdown = '_'
+                writeItalic(markdown, content)
+                break;
+            case 'strong':
+                markdown = '__'
+                writeStrong(markdown, content)
+                break;
+            case 'blockquote':
+                markdown = '__'
+                writeBlockquote(markdown, content)
+                break;
+            case 'link':
+                writeLink(content)
+                break;
         }
-
-
-        const content = responses.description
-
-        appendAsyncFile('readme.md', markdown + ' ' + content + "\n")
-        console.log('succesfully written to readme') 
-        
-        start()
     }
 
-    catch(err) {
+    catch (err) {
         console.log(err)
     }
 }
 
+
+async function writeHeaders(markdown, content) {
+    console.log('Write a header')
+    try {
+        appendAsyncFile('readme.md', markdown + ' ' + content + "\n")
+        console.log('succesfully written to readme')
+
+        start()
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+}
+
+async function writeItalic(markdown, content) {
+    console.log('Write italic paragraph')
+    try {
+        appendAsyncFile('readme.md', markdown + content + markdown + "\n")
+        console.log('succesfully written to readme')
+
+        start()
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+}
+
+async function writeStrong(markdown, content) {
+    console.log('Write strong paragraph')
+    try {
+        appendAsyncFile('readme.md', markdown + content + markdown + "\n")
+        console.log('succesfully written to readme')
+
+        start()
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+}
+
+async function writeBlockquote(markdown, content) {
+    console.log('Write strong paragraph')
+    try {
+        appendAsyncFile('readme.md', markdown + content + "\n")
+        console.log('succesfully written to readme')
+
+        start()
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+}
+
+async function writeLink(content) {
+    console.log('Write strong paragraph')
+    try {
+        const linkInfo = await inquirer.prompt([
+            {
+                message: 'chose a placholder for your link',
+                name: 'placeholder',
+            },
+            {
+                message: 'enter the link',
+                name: 'link',
+            },
+
+        ])
+
+        console.log(linkInfo)
+
+        // appendAsyncFile('readme.md', '[' + content + ']' + '(' + content + ')' + "\n")
+        // console.log('succesfully written to readme')
+
+        // start()
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+}
 
 
