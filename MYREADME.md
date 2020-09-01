@@ -25,6 +25,14 @@ __
 <!-- Links -->
 [Traversy Media](https://.traversymedia.com "Traversy Media")
 
+<!-- Table of content -->
+# Table fo content
+1. [Exemple](#example)
+
+
+## Example
+This is the table of content example
+
 <!-- UL -->
 * Item 1
 * Item 2
