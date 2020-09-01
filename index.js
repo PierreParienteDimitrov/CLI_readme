@@ -260,12 +260,6 @@ async function writeLinks(element) {
         let url = userRes.url
         // console.log(placeholder)
 
-        let toConvert = element
-        // console.log(element)
-
-        let filteredMarkdown = await convertToMarkdown(toConvert)
-        // console.log(filteredMarkdown)
-
         appendAsyncFile('readme.md', "[" + placeholder + "]" + "(" + url + ")" + "\n")
         console.log('succesfully written to readme')
 
@@ -316,7 +310,7 @@ async function writeCodeBlock() {
 
         let display = await generateCodeBlock(language, codeblock)
 
-        appendAsyncFile('readme.md', display)
+        appendAsyncFile('readme.md', display + "\n")
         console.log('succesfully written to readme')
 
         start()

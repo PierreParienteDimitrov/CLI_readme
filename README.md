@@ -1,14 +1,12 @@
-# Example of code block
- 
-    ```javascript   
-    const leftMd = leftMdArr.filter(item => item === markdown)  
-    ``` 
-     
-```javascript   
-const leftMd = leftMdArr.filter(item => item === markdown)  
-``` 
-# This is the code
- 
-```const leftMd = leftMdArr.filter(item => item === markdown)   
-        }const leftMd = leftMdArr.filter(item => item === markdown)  
-``` 
+# CLI Readme Generator
+## Description
+ This is a readme generator
+[github pages](https://github.com/PierreParienteDimitrov/CLI_readme)
+_Don't forget to mention_
+ JJJ
+> Wooooow
+* [x] Done
+[Technology](#technology)
+* 
+[Technology](#technology)
+[technology2](#technology2)
