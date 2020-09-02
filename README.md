@@ -2,6 +2,8 @@
 ## Description
  This application allows the user to create a clean readme file through the terminal. While writing good readme file is important, it often takes the developer out of its flow. This command-line interface readme generator allows to quickly generate the readme while staying in the terminal. It generates automatically the appropriate markdown syntax, resulting in a clean, organised file. 
 
+ Here is a link of a screencast: [CLI Readme Generator Video](https://youtu.be/1C4V8tVYE6Q)
+
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
@@ -37,7 +39,7 @@ npm install
 
 ## Badge
  ![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)
- 
+
 
 ## Contributing
  Learn more by reading the [Contributor Covenant](./CODE_OF_CONDUCT.md) file.
